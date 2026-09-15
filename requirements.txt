@@ -1,0 +1,7 @@
+Flask
+Flask-CORS
+Werkzeug
+opencv-python
+pytesseract
+reportlab
+python-docx
