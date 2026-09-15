@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>PackCheck AI</title>
+  <link rel="stylesheet" href="syle.css">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+  <div id="loginScreen" class="auth-screen">
+    <div class="auth-decoration" aria-hidden="true"></div>
+    <form id="loginForm" class="auth-card">
+      <div class="brand-mark"><span>✓</span></div>
+      <p class="eyebrow">PACKAGE INSPECTION</p>
+      <h1>PackCheck AI</h1>
+      <p class="auth-copy">Check a package label with AI-assisted inspection. Designed for inspectors, businesses, and everyday users.</p>
+      <div class="field">
+        <label for="loginUsername">Username</label>
+        <input id="loginUsername" name="username" type="text" autocomplete="username" required placeholder="Enter your username">
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" required placeholder="Enter your password">
+      </div>
+      <button class="button primary full" type="submit">Continue</button>
+      <p id="loginError" class="form-error" role="alert"></p>
+      <button id="showSignupButton" class="link-button" type="button">Create admin account</button>
+      <p class="microcopy">Advanced controls are available only to administrators.</p>
+    </form>
+
+    <form id="signupForm" class="auth-card hidden">
+      <div class="brand-mark"><span>+</span></div>
+      <p class="eyebrow">ADMIN SETUP</p>
+      <h1>Create admin account</h1>
+      <p class="auth-copy">Use this only when setting up the administration side of PackCheck AI.</p>
+      <div class="field">
+        <label for="signupUsername">Username</label>
+        <input id="signupUsername" name="username" type="text" autocomplete="username" required placeholder="Choose a username">
+      </div>
+      <div class="field">
+        <label for="signupPassword">Password</label>
+        <input id="signupPassword" name="password" type="password" minlength="8" autocomplete="new-password" required placeholder="At least 8 characters">
+      </div>
+      <div class="field">
+        <label for="signupPasswordConfirmation">Confirm password</label>
+        <input id="signupPasswordConfirmation" name="passwordConfirmation" type="password" minlength="8" autocomplete="new-password" required placeholder="Repeat your password">
+      </div>
+      <button class="button primary full" type="submit">Create account</button>
+      <p id="signupError" class="form-error" role="alert"></p>
+      <button id="showLoginButton" class="link-button" type="button">Back to sign in</button>
+    </form>
+  </div>
+
+  <div id="appShell" class="app hidden">
+    <header class="mobile-topbar">
+      <div class="brand-compact"><div class="brand-logo">✓</div><div><strong>PackCheck</strong><span>AI inspection</span></div></div>
+      <button id="mobileMenuButton" class="icon-button" aria-label="Open menu">☰</button>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <div class="brand-logo">✓</div>
+        <div><strong>PackCheck AI</strong><span>Package inspection</span></div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-section="home"><span>⌂</span><div><strong>Home</strong><small>Start here</small></div></button>
+        <button class="nav-item" data-section="records"><span>▤</span><div><strong>Records</strong><small>History & reports</small></div></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="online-pill"><i></i> System ready</div>
+        <button id="adminButton" class="admin-button hidden" type="button"><span>⚙</span> Admin controls</button>
+        <button id="logoutButton" class="logout-button" type="button">Sign out</button>
+        <div class="user-card"><div class="avatar" id="userAvatar">U</div><div><strong id="userName">User</strong><span id="userRole">Authorized user</span></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow" id="pageEyebrow">WELCOME</p><h1 id="pageTitle">What would you like to do?</h1><p id="pageSubtitle">Choose one option. You don't need to know how the system works.</p></div>
+        <div class="topbar-actions"><span class="secure-badge">● Secure session</span></div>
+      </header>
+
+      <section id="home" class="page-section active">
+        <div class="hero-simple">
+          <div>
+            <span class="hero-chip">Simple by design</span>
+            <h2>Check a package without the complexity.</h2>
+            <p>Take a clear photo of the package label and PackCheck will extract the information and guide you through the inspection.</p>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="box-art"><span>PKG</span><b>✓</b></div></div>
+        </div>
+
+        <div class="choice-grid">
+          <button class="choice-card featured" data-section-target="scan">
+            <div class="choice-icon">📷</div><span class="choice-kicker">MOST USED</span><h3>Check a package</h3><p>Use your camera to inspect a package label. You can also upload a photo.</p><span class="choice-action">Start inspection <b>→</b></span>
+          </button>
+          <button class="choice-card" data-section-target="records">
+            <div class="choice-icon secondary">▤</div><span class="choice-kicker">YOUR RECORDS</span><h3>View history</h3><p>Find previous inspections, review results, and generate reports.</p><span class="choice-action">Open records <b>→</b></span>
+          </button>
+          <button class="choice-card" id="guideButton" type="button">
+            <div class="choice-icon tertiary">?</div><span class="choice-kicker">NEED HELP?</span><h3>How it works</h3><p>A three-step guide for anyone using PackCheck for the first time.</p><span class="choice-action">Open guide <b>→</b></span>
+          </button>
+        </div>
+
+        <div class="home-stats" aria-label="Inspection summary">
+          <div><span>Inspections</span><strong id="totalScans">0</strong></div>
+          <div><span>Compliant</span><strong id="compliantScans">0</strong></div>
+          <div><span>Needs review</span><strong id="reviewScans">0</strong></div>
+          <div><span>Issues found</span><strong id="failedScans">0</strong></div>
+        </div>
+      </section>
+
+      <section id="scan" class="page-section">
+        <div class="progress-steps" aria-label="Inspection steps"><div class="step active"><b>1</b><span>Capture label</span></div><div class="line"></div><div class="step"><b>2</b><span>AI inspection</span></div><div class="line"></div><div class="step"><b>3</b><span>Review result</span></div></div>
+
+        <div id="captureStage" class="capture-stage">
+          <div class="capture-panel">
+            <div class="capture-header"><div><span class="hero-chip">STEP 1</span><h2>Capture the package label</h2><p>Keep the label inside the frame. Good lighting and sharp text give better results.</p></div><span class="camera-status" id="cameraStatus">Camera ready</span></div>
+            <div class="scanner-shell">
+              <video id="cameraPreview" autoplay playsinline class="camera-preview hidden"></video>
+              <canvas id="captureCanvas" class="hidden"></canvas>
+              <img id="imagePreview" class="image-preview hidden" alt="Selected package label">
+              <div id="scannerPlaceholder" class="scanner-empty"><div class="scanner-ring">📷</div><h3>Ready for a photo</h3><p>Start the camera for the easiest experience.</p></div>
+              <div class="scanner-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="capture-actions">
+              <button id="startCameraButton" class="button primary big">📷 Start camera</button>
+              <button id="captureButton" class="button primary big hidden">● Take photo</button>
+              <button id="stopCameraButton" class="button ghost hidden">Stop camera</button>
+              <label class="button ghost big upload-button">Upload photo<input type="file" id="imageInput" accept="image/*" multiple hidden></label>
+            </div>
+            <p id="cameraMessage" class="helper-text">You can use one to three photos. The system will treat them as one inspection.</p>
+          </div>
+
+          <aside class="simple-tip"><div class="tip-icon">✓</div><h3>For the best result</h3><p>Place the package on a flat surface and make sure the printed details are easy to read.</p><div class="tip-list"><span>✓ Avoid glare</span><span>✓ Fill most of the frame</span><span>✓ Keep text straight</span></div></aside>
+        </div>
+
+        <div class="inspection-bar">
+          <div><span>Ready?</span><strong>Check the package when your photo looks clear.</strong></div>
+          <button id="scanButton" class="button primary big">Check package <b>→</b></button>
+        </div>
+        <p id="error" class="form-error" role="alert"></p>
+        <div id="loadingPanel" class="loading-card hidden"><div class="spinner"></div><div><strong>Checking the package…</strong><p id="loadingText">Reading the label and evaluating the applicable checks.</p></div></div>
+
+        <div id="resultSection" class="result-wrap hidden">
+          <div class="result-banner" id="resultBanner"><div><span class="hero-chip">STEP 3 · RESULT</span><h2 id="resultHeadline">Inspection complete</h2><p id="statusDescription">Review the result below.</p></div><div class="result-icon" id="resultIcon">✓</div></div>
+          <div class="result-score-row"><div><span>Inspection status</span><strong id="overallStatus">—</strong></div><div><span>Compliance score</span><strong id="complianceScore">0%</strong><div class="score-track"><div id="scoreProgress" class="score-bar"></div></div></div><div><span>Checks passed</span><strong id="passedCount">0</strong></div><div><span>Needs review</span><strong id="manualCount">0</strong></div></div>
+
+          <div id="issuesSummary" class="issues-summary"></div>
+          <div class="result-actions"><button id="newScanButton" class="button primary">Start new check</button><button id="pdfButton" class="button ghost">PDF report</button><button id="wordButton" class="button ghost">Word report</button></div>
+
+          <details class="advanced-panel"><summary><span>View detailed inspection</span><small>OCR, readability and rule-by-rule checks</small><b>⌄</b></summary><div class="advanced-content">
+            <div class="detail-grid"><div class="panel"><div class="panel-title"><h3>What was detected</h3><p>Text and declarations found on the package.</p></div><div id="declarationsList"></div></div><div class="panel"><div class="panel-title"><h3>Readability</h3><p>How confidently the label could be read.</p></div><div class="readability-box"><div class="readability-score"><span id="readabilityStatus">—</span><strong id="readabilityConfidence">0%</strong></div><div class="metric"><span>OCR confidence</span><div class="mini-progress"><div id="ocrProgress" class="mini-progress-bar"></div></div></div></div></div></div>
+            <div class="panel"><div class="panel-title"><h3>Rule-by-rule checks</h3><p>Review the evidence, skip checks that do not apply, and choose the final status before generating a report.</p></div><div class="rule-table-wrapper"><table><thead><tr><th>Requirement</th><th>Details</th><th>Status</th></tr></thead><tbody id="ruleTableBody"></tbody></table></div></div>
+            <div class="panel"><div class="panel-title"><h3>Issues & manual review</h3><p>Items that need attention.</p></div><div id="violationsContainer"></div></div>
+            <div class="panel"><div class="panel-title"><h3>Raw detected text</h3><p>Technical OCR output for advanced users.</p></div><pre id="ocrText" class="ocr-output"></pre></div>
+          </div></details>
+        </div>
+      </section>
+
+      <section id="records" class="page-section">
+        <div class="records-header"><div><span class="hero-chip">RECORDS</span><h2>Inspection history</h2><p>Previous checks are kept here so they never get in the way of a new inspection.</p></div><button class="button primary" data-section-target="scan">+ New check</button></div>
+        <div class="records-toolbar"><input id="historySearch" type="search" placeholder="Search by scan ID or status…"><select id="historyFilter"><option value="all">All results</option><option value="COMPLIANT">Compliant</option><option value="NON-COMPLIANT">Issues found</option><option value="NEEDS REVIEW">Needs review</option></select></div>
+        <div class="panel table-panel"><div class="table-wrapper"><table><thead><tr><th>Inspection</th><th>Status</th><th>Score</th><th>Date</th><th></th></tr></thead><tbody id="historyTableBody"></tbody></table></div><div id="historyEmpty" class="empty-state hidden"><div>▤</div><strong>No inspections found</strong><p>Completed checks will appear here.</p></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="guideModal" class="modal-backdrop hidden"><div class="modal-card guide-modal"><button class="modal-close" data-close-modal="guideModal">×</button><span class="hero-chip">QUICK GUIDE</span><h2>Three simple steps</h2><div class="guide-steps"><div><b>1</b><h3>Take a photo</h3><p>Start the camera and keep the package label clear.</p></div><div><b>2</b><h3>Let AI check it</h3><p>PackCheck reads the text and evaluates the available rules.</p></div><div><b>3</b><h3>Review the answer</h3><p>See a simple result first. Open detailed inspection only when needed.</p></div></div><button class="button primary full" data-close-modal="guideModal">Got it</button></div></div>
+
+  <div id="adminModal" class="modal-backdrop hidden"><div class="modal-card admin-modal"><button class="modal-close" data-close-modal="adminModal">×</button><span class="hero-chip">ADMIN</span><h2>Advanced controls</h2><p>These controls are hidden from normal users.</p><div class="admin-tabs"><button class="admin-tab active">Users</button><button class="admin-tab" id="adminHealthButton">System status</button></div><div id="adminContent"><div class="admin-create"><div><strong>Add a user</strong><p>Create an inspector or another administrator.</p></div><form id="adminCreateForm"><input id="adminUsername" placeholder="Username" required><input id="adminPassword" type="password" minlength="8" placeholder="Password (8+ characters)" required><select id="adminRole"><option value="inspector">Inspector</option><option value="admin">Admin</option></select><button class="button primary" type="submit">Add</button></form></div><div id="adminUsers" class="admin-users"></div></div></div></div>
+
+  <div id="scanDetailModal" class="modal-backdrop hidden"><div class="modal-card scan-detail-modal"><button class="modal-close" data-close-modal="scanDetailModal">×</button><span class="hero-chip">RECORD</span><h2 id="detailTitle">Inspection details</h2><div id="scanDetailContent"></div></div></div>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="script.js"></script>
+  <script src="preview.js"></script>
+  <script src="review.js"></script>
+  <script src="progress.js"></script>
+</body>
+</html>

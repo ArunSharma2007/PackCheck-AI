@@ -1,0 +1,84 @@
+[
+  {
+    "rule_id": "R4",
+    "field": "Mandatory Declarations",
+    "keywords": [
+      "mrp",
+      "net quantity",
+      "manufactured by",
+      "packed by",
+      "imported by"
+    ],
+    "description": "Required declarations should be present on the package or label.",
+    "manual_review": false
+  },
+  {
+    "rule_id": "R6",
+    "field": "Key Product Information",
+    "keywords": [
+      "mrp",
+      "net quantity",
+      "manufactured by",
+      "manufacturing",
+      "packed by",
+      "imported by"
+    ],
+    "description": "Key retail package information should be provided.",
+    "manual_review": false
+  },
+  {
+    "rule_id": "R10",
+    "field": "Manufacturer Address",
+    "keywords": [
+      "manufactured by",
+      "manufactured at",
+      "packed by",
+      "imported by",
+      "address"
+    ],
+    "evidence_patterns": [
+      "\\bp\\.?\\s*o\\.?\\s+box\\b",
+      "\\b\\d{6}\\b",
+      "\\b(?:email|e-mail)\\b",
+      "\\b(?:call|phone|tel)\\b",
+      "\\b(?:road|street|lane|nagar|industrial area)\\b"
+    ],
+    "minimum_evidence": 2,
+    "description": "Manufacturer, packer or importer name and applicable address information should be displayed.",
+    "manual_review": false
+  },
+  {
+    "rule_id": "R11-13",
+    "field": "Net Quantity",
+    "keywords": [
+      "net quantity",
+      "net qty"
+    ],
+    "evidence_patterns": [
+      "\\b\\d+(?:\\.\\d+)?\\s?(?:mg|g|kg|ml|l|litre|liter|pcs|pack)\\b"
+    ],
+    "description": "Net quantity should be declared using the applicable unit and should not be misleading.",
+    "manual_review": true
+  },
+  {
+    "rule_id": "R18",
+    "field": "MRP",
+    "keywords": [
+      "mrp",
+      "maximum retail price"
+    ],
+    "description": "Declared MRP should be present and should not be tampered with or exceeded at retail sale.",
+    "manual_review": true
+  },
+  {
+    "rule_id": "R31",
+    "field": "Advertisement",
+    "keywords": [
+      "mrp",
+      "retail sale price",
+      "net quantity"
+    ],
+    "description": "Advertisements mentioning retail sale price require applicable net quantity information and presentation.",
+    "manual_review": true
+  }
+]

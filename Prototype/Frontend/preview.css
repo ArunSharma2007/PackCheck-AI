@@ -1,0 +1,42 @@
+.scanner-shell.preview-active {
+  height: auto;
+  min-height: 410px;
+  padding: 18px;
+}
+
+.scanner-shell.preview-active .image-preview {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh;
+}
+
+.scanner-shell.preview-active .scanner-frame {
+  display: none;
+}
+
+.rule-status-select {
+  min-width: 130px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.rule-resolution {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.progress-steps .step.completed {
+  color: var(--green);
+}
+
+.progress-steps .step.completed b {
+  background: var(--green);
+  color: #fff;
+}
